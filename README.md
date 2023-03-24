@@ -1,1 +1,1 @@
-# KTH Bibliotekts SpråkTandem
+# KTH Bibliotekets SpråkTandem
