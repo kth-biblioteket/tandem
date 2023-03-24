@@ -167,6 +167,6 @@ function updateLanguage($lang)
 }
 
 mysqli_close($con) ;
-//header("location: https://www.kth.se/larande/sprak/tandem/admin/index.php") ;
-header("location: index.php") ;
+header("location: $app_url") ;
+
  
