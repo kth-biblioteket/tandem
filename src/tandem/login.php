@@ -59,7 +59,7 @@ try {
 		$userid = $_SESSION['kth_id']  ;
 		$returl = str_replace('ampersand','&',$returl);
 		registerTandemLogin($userid);
-		header("location: $return_url");
+		header("location: $app_url");
 	}
   
 } catch (OpenIDConnectClientException $e) {

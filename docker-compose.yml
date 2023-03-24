@@ -14,7 +14,7 @@ services:
       - "traefik.http.routers.tandem.tls=true"
       - "traefik.http.routers.tandem.tls.certresolver=myresolver"
     volumes:
-      - /local/docker/tandem/config.php:/var/www/html/config.php
+      - /local/docker/tandem/config.php:/var/www/html/tandem/config.php
     networks:
       - "apps-net"
 
