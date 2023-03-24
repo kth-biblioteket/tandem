@@ -1,0 +1,42 @@
+version: "3.6"
+
+services:
+  tandem:
+    container_name: tandem
+    depends_on:
+      - tandem-db
+    image: ghcr.io/kth-biblioteket/tandem:${REPO_TYPE}
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tandem.rule=Host(`${DOMAIN_NAME}`)"
+      - "traefik.http.routers.tandem.entrypoints=websecure"
+      - "traefik.http.routers.tandem.tls=true"
+      - "traefik.http.routers.tandem.tls.certresolver=myresolver"
+    volumes:
+      - /local/docker/tandem/config.php:/var/www/html/config.php
+    networks:
+      - "apps-net"
+
+  tandem-db:
+    container_name: tandem-db
+    image: mysql:8.0
+    volumes:
+      - persistent-tandem-db:/var/lib/mysql
+      - ./dbinit:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    networks:
+      - "apps-net"
+
+volumes:
+  persistent-tandem-db:
+
+networks:
+  apps-net:
+    external: true
