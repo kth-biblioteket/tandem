@@ -1,15 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.4.8
--- http://www.phpmyadmin.net
---
--- Värd: localhost
--- Tid vid skapande: 05 mars 2023 kl 14:54
--- Serverversion: 5.6.24-log
--- PHP-version: 7.2.3
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
 --
 -- Databas: `tandemlearn`
 --
@@ -28,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `dialing_code` int(11) DEFAULT NULL,
   `name_sv` char(128) DEFAULT NULL,
   `name_en` char(128) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+);
 
 -- --------------------------------------------------------
 
@@ -41,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `tll_frontlines` (
   `textline` text,
   `visiblefrom` date DEFAULT NULL,
   `visibleto` date DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+);
 
 -- --------------------------------------------------------
 
@@ -53,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `tll_languages` (
   `id` char(2) NOT NULL,
   `name_en` char(128) DEFAULT NULL,
   `tll` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+);
 
 -- --------------------------------------------------------
 
@@ -68,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `tll_logincounts` (
   `loginmonth` int(11) NOT NULL,
   `loginday` int(11) NOT NULL,
   `logintime` varchar(15) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+);
 
 -- --------------------------------------------------------
 
@@ -104,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `tll_users` (
   `busy` enum('t','f') DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   `campus` char(40) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+);
 
 --
 -- Index för dumpade tabeller

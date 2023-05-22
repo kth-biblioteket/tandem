@@ -19,13 +19,13 @@ if (isset($user)) {
 	}
 }
 require "getquery.php" ; 
-if(isset($_GET['search']))
+if(isset($_POST['search']))
 {
-  	if (isset($_GET['lang_want'])) {
-		$lang_want 	= $_GET['lang_want'] ;
+  	if (isset($_POST['lang_want'])) {
+		$lang_want 	= $_POST['lang_want'] ;
 	}
-	if (isset($_GET['lang_have'])) {
-		$lang_have 	= $_GET['lang_have'] ;
+	if (isset($_POST['lang_have'])) {
+		$lang_have 	= $_POST['lang_have'] ;
 	}
 		
  	$sqlSearch = "SELECT DISTINCT tll_users . * 
@@ -49,7 +49,7 @@ if(isset($_SESSION['kth_id']))
 ?>
 <h1 class="title">Search:</h1> 
 <br>
-<form id="fm1" class="large fm-v clearfix" action="https://apps-ref.lib.kth.se/tandem/searchtemp.php" method="post">
+<form id="fm1" class="large fm-v clearfix" action="search.php?search=search" method="post">
  
   <label  class="fl-label">I would like to find someone who can teach me:</label>
  
