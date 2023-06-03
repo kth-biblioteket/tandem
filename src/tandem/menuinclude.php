@@ -64,7 +64,7 @@ if(@$user['manager'] === "t" && @$user['admin'] === "t" ) {
  ?>
 
 <li class="leaf">
-   	 	<a class="menuItem"  href="<?php echo $app_url?>" title="My Profile">Tandem Language Learning</a>
+   	 	<a class="menuItem"  href="<?php echo $app_url;?>" title="My Profile">Tandem Language Learning</a>
 </li>
     
 </ul>
