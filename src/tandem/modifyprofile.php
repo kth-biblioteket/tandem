@@ -47,7 +47,7 @@ if(isset($_SESSION['kth_id']))
 
 	<h1 class="title">Modify profile</h1> 
 	   <p>You may modify your profile below.</p>
-<form action="modify.php" method="POST" id="fm1" class="large fm-v clearfix" enctype="multipart/form-data">    
+<form action="modify.php" method="POST" id="fm1" class="large fm-v clearfix">    
 <input type="hidden" name="kth_i_d" value="<?php echo $_SESSION['kth_id'] ; ?>">
 	<label class="fl-label">First Name:</label>
 	<input    name="first_name" type="text" value="<?php echo $user['first_name'] ; ?>"   required   >
