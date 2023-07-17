@@ -63,6 +63,7 @@ while($langs = mysqli_fetch_assoc($result))
 
 function howManySpeak($langid)
 {
+	global $con;
     // 2014-10-29 CEWI Lagt till: (...) AND lastloginyear = '$year' AND last_login > current_date - interval 6 month
 	$sql = "SELECT COUNT(id) FROM tll_users WHERE (lang_have_1 = '$langid' OR lang_have_2 = '$langid') AND last_login > current_date - interval 6 month " ;
 	$result = mysqli_query($con, $sql) ;
@@ -73,6 +74,7 @@ function howManySpeak($langid)
 
 function howManyWant($langid)
 {
+	global $con;
     // 2014-10-29 CEWI Lagt till: (...) AND lastloginyear = '$year' AND last_login > current_date - interval 6 month
 	$sql = "SELECT COUNT(id) FROM tll_users WHERE (lang_want_1 = '$langid' OR lang_want_2 = '$langid') AND last_login > current_date - interval 6 month " ;
 	$result = mysqli_query($con, $sql) ;
