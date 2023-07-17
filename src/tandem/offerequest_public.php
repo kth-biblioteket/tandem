@@ -41,8 +41,8 @@ include "alphabet.php" ;
 
  <?php 
 $langSql = "SELECT * FROM tll_languages  WHERE tll = 1  ORDER BY name_en" ;
-$result = mysql_query($langSql) ;
-while($langs = mysql_fetch_assoc($result))
+$result = mysqli_query($langSql) ;
+while($langs = mysqli_fetch_assoc($result))
 {
 ?>
 <tr <?php if(howManyWant($langs['id']) > howManySpeak($langs['id'])) echo " style='background-color:#DCE6EF'" ; ?> >
@@ -65,8 +65,8 @@ function howManySpeak($langid)
 {
     // 2014-10-29 CEWI Lagt till: (...) AND lastloginyear = '$year' AND last_login > current_date - interval 6 month
 	$sql = "SELECT COUNT(id) FROM tll_users WHERE (lang_have_1 = '$langid' OR lang_have_2 = '$langid') AND last_login > current_date - interval 6 month " ;
-	$result = mysql_query($sql) ;
-	$row = mysql_fetch_row($result) ;
+	$result = mysqli_query($sql) ;
+	$row = mysqli_fetch_row($result) ;
 	$k = $row[0] ;
 	return $k ;
 }
@@ -75,8 +75,8 @@ function howManyWant($langid)
 {
     // 2014-10-29 CEWI Lagt till: (...) AND lastloginyear = '$year' AND last_login > current_date - interval 6 month
 	$sql = "SELECT COUNT(id) FROM tll_users WHERE (lang_want_1 = '$langid' OR lang_want_2 = '$langid') AND last_login > current_date - interval 6 month " ;
-	$result = mysql_query($sql) ;
-	$row = mysql_fetch_row($result) ;
+	$result = mysqli_query($sql) ;
+	$row = mysqli_fetch_row($result) ;
 	$k = $row[0] ;
 	return $k ;	
 }
