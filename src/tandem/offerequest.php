@@ -49,6 +49,7 @@ function howManyWant($langid)
 function getoffer() {
 	$ch = curl_init();
 	$url = $tandemapi . 'offerrequest';
+	error_log("getoffer" . $url);
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
