@@ -16,44 +16,9 @@ if(!$user){
 include "alphabet.php" ;
 if($_SESSION['kth_id'])
 {
-	/*
-	$month = $_GET['month'] ;
-	$year  = $_GET['year'] ;
-	
- 	$sqlLastlogin = "SELECT * FROM tll_users
-					WHERE lastloginyear = '$year'  AND lastloginmonth = '$month' ORDER BY last_login" ;
- 	//GROUP BY  tll_users.id
-	 $result = mysql_query($sqlLastlogin) ;
-	 */
+	echo getoffer();
 ?>
 
-<h1 class="title">Administration: Speaks/Wants</h1> 
- 
-<br>
-  <table width="100%" border="1"> 
-  <tr>
-            <td> Language </td>
-            <td align="center"> Speaks </td>
-            <td align="center"> Wants </td>
-            
- </tr>
-
- <?php 
-$langSql = "SELECT * FROM tll_languages  WHERE tll = 1  ORDER BY name_en" ;
-$result = mysqli_query($con, $langSql) ;
-while($langs = mysqli_fetch_assoc($result))
-{
-?>
-<tr <?php if(howManyWant($langs['id']) > howManySpeak($langs['id'])) echo " style='background-color:#DCE6EF'" ; ?> >
-            <td><?php echo $langs['name_en'] ; ?></td>
-            <td align="center"><?php echo howManySpeak($langs['id']) ;?></td>
-            <td align="center"><?php echo howManyWant($langs['id']) ;?></td>
- </tr>	
-<?php	 
-}
-
-?>
-</table>
 <?php 
 
 }
@@ -80,6 +45,23 @@ function howManyWant($langid)
 	$row = mysqli_fetch_row($result) ;
 	$k = $row[0] ;
 	return $k ;	
+}
+function getoffer() {
+	$ch = curl_init();
+	$url = $tandemapi . 'offerrequest';
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	$response = curl_exec($ch);
+	if(curl_errno($ch)) {
+		$json = '"error":{"Error connecting to loginserver."}' . curl_errno($ch);
+		$error = $json;
+		curl_close($ch);
+		return $error;
+	}
+	curl_close($ch);
+	return $response;
 }
 
 
