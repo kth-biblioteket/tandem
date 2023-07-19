@@ -20,7 +20,7 @@ services:
 
   tandem-db:
     container_name: tandem-db
-    image: mysql:8.0
+    image: mysql:5.6
     volumes:
       - persistent-tandem-db:/var/lib/mysql
       - ./dbinit:/docker-entrypoint-initdb.d
