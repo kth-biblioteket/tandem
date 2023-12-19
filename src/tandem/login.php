@@ -69,6 +69,7 @@ try {
 
 function registerTandemLogin($userid)
 {
+	global $con;
 	$loginyear 	= date("Y") ;
 	$loginmonth = date("m") ;
 	$loginday 	= date("d") ;
